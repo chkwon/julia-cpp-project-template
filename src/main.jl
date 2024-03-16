@@ -9,7 +9,7 @@ end
 const LIBBAR = joinpath(@__DIR__, "../build/libbar.$(ext)")
 
 
-function c_api_bar(v::Vector{Cdouble}, factor::Cint)
+function c_api_bar!(v::Vector{Cdouble}, factor::Cint)
     # Cdouble == Float64
     # Cint == Int32
 
@@ -35,7 +35,7 @@ function test()
     factor = Int32(3)
 
     println("Before: ", v)
-    c_api_bar(v, factor)
+    c_api_bar!(v, factor)
     println("After : ", v)
 
     @show v, factor
